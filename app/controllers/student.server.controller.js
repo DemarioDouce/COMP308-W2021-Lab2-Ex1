@@ -49,11 +49,15 @@ exports.signIn = function (req, res) {
   });
 };
 
-exports.students = function (req, res) {
+exports.students = async function (req, res) {
+  // find all documents
+  let students = await Student.find({});
+
+  res.json({ students });
   //display signin.ejs
-  res.render("students", {
-    title: "Students - Course Evaluation",
-  });
+  // res.render("students", {
+  //   title: "Students - Course Evaluation",
+  // });
 };
 
 //Mongoose stuff
@@ -77,7 +81,7 @@ exports.create = function (req, res, next) {
 // Create a new 'create' controller method
 exports.find = function (req, res, next) {
   // executes, passing results to callback
-  let student = Student.find(
+  Student.find(
     { email: req.body.email, password: req.body.password },
     function (err, docs) {
       if (err) {
