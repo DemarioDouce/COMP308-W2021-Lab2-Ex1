@@ -14,33 +14,40 @@
     />
 
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="/css/index.css" />
+    <link rel="stylesheet" href="/css/general.css" />
 
     <title><%= title %></title>
   </head>
   <body>
+    <header class="text-center">
+      <img src="/img/logo.png" alt="Logo" width="300px" height="200px" />
+    </header>
     <div class="container">
       <div class="text-center">
-        <h1>WELCOME</h1>
-        <a class="btn btn-primary" href="#" role="button"
+        <div class="text-center">
+          <h1>WELCOME</h1>
+          <h5>PLEASE SELECT FROM OUR OPTIONS</h5>
+        </div>
+
+        <a class="btn btn-primary" href="/signup" role="button"
           >SIGN UP AS A STUDENT</a
         >
-        <a class="btn btn-primary" href="#" role="button"
+        <a class="btn btn-primary" href="/signin" role="button"
           >SIGN IN AS A STUDENT</a
         >
       </div>
       <br />
       <div class="text-center">
-        <a class="btn btn-primary" href="#" role="button"
+        <a class="btn btn-primary" href="/students" role="button"
           >DISPLAY ALL STUDENTS</a
         >
-        <a class="btn btn-primary" href="#" role="button"
+        <a class="btn btn-primary" href="/comments" role="button"
           >DISPLAY COMMENTS BY STUDENT</a
         >
       </div>
     </div>
     <!-- Copyright -->
-    <footer class="bg-dark text-center text-lg-start" style="margin-top: 35%">
+    <footer class="bg-dark text-center text-lg-start" style="margin-top: 20%">
       <div class="text-center p-3" style="color: white">
         <p>
           Copyright© 1995-2021 Demario Douce-301021637. All rights reserved.
