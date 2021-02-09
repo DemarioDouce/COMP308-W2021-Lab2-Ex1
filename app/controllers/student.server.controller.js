@@ -1,3 +1,5 @@
+// Load the 'User' Mongoose model
+var Student = require("mongoose").model("Student");
 // Create a new render method to render index.ejs
 //
 //You can require this module and use this function
@@ -52,4 +54,42 @@ exports.students = function (req, res) {
   res.render("students", {
     title: "Students - Course Evaluation",
   });
+};
+
+//Mongoose stuff
+// Create a new 'create' controller method
+exports.create = function (req, res, next) {
+  // Create a new instance of the 'Student' Mongoose model
+  var student = new Student(req.body); //get data from ejs page and attaches them to the model
+
+  // Use the 'Student' instance's 'save' method to save a new user document
+  student.save(function (err) {
+    if (err) {
+      // Call the next middleware with an error message
+      return next(err);
+    } else {
+      // Use the 'redirect' object t
+      res.redirect("/comments");
+    }
+  });
+};
+
+// Create a new 'create' controller method
+exports.find = function (req, res, next) {
+  // executes, passing results to callback
+  let student = Student.find(
+    { email: req.body.email, password: req.body.password },
+    function (err, docs) {
+      if (err) {
+        res.json({ Error: err });
+      } else if (!docs.length) {
+        res.json({
+          Error:
+            "Email or password maybe wrong or you do not have an account with us.",
+        });
+      } else {
+        res.redirect("/comments");
+      }
+    }
+  );
 };

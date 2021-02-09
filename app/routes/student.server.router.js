@@ -11,6 +11,8 @@ module.exports = function (app) {
   //handle a get request made to root path
   app.get("/", student.index); //go to http://localhost:3000/
   app.get("/signup", student.signUp); //go to http://localhost:3000/signup
+  app.post("/signup", student.create);
   app.get("/signin", student.signIn); //go to http://localhost:3000/signin
+  app.post("/signin", student.find);
   app.get("/students", student.students); //go to http://localhost:3000/students
 };
