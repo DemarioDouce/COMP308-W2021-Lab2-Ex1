@@ -12,4 +12,5 @@ module.exports = function (app) {
   app.get("/", student.index); //go to http://localhost:3000/
   app.get("/signup", student.signUp); //go to http://localhost:3000/signup
   app.get("/signin", student.signIn); //go to http://localhost:3000/signin
+  app.get("/students", student.students); //go to http://localhost:3000/students
 };

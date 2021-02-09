@@ -41,8 +41,15 @@ exports.signUp = function (req, res) {
 };
 
 exports.signIn = function (req, res) {
-  //display index.ejs
+  //display signin.ejs
   res.render("signin", {
     title: "Sign in - Course Evaluation",
+  });
+};
+
+exports.students = function (req, res) {
+  //display signin.ejs
+  res.render("students", {
+    title: "Students - Course Evaluation",
   });
 };
