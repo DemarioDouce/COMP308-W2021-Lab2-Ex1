@@ -1,7 +1,7 @@
 // Load the module dependencies:
 //  config.js module and mongoose module
 var config = require("./config"),
-var mongoose = require("mongoose");
+  mongoose = require("mongoose");
 // Define the Mongoose configuration method
 module.exports = function () {
   // Use Mongoose to connect to MongoDB
@@ -17,12 +17,11 @@ module.exports = function () {
     });
 
   // Load the 'Comment' model
-  require("../app/models/user.server.model");
+  require("../app/models/comment.server.model");
 
-    // Load the 'Student' model
-    require("../app/models/student.server.model");
-  
+  // Load the 'Student' model
+  require("../app/models/student.server.model");
+
   // Return the Mongoose connection instance
   return db;
-
 };

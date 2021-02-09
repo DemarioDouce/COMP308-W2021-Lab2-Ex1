@@ -8,7 +8,7 @@
   if (session.email) {
     res.redirect("/comments_form");
   } else {
-    res.render("index", {
+    res.render("index42432", {
       title: "Home - Course Evaluation",
     });
   }

@@ -50,7 +50,7 @@ module.exports = function () {
   // Load the routing files
   require("../app/routes/index.server.routes.js")(app);
   //require("../app/routes/comment.server.router")(app);
-  //require("../app/routes/student.server.router")(app);
+  require("../app/routes/student.server.router")(app);
 
   //The express.static() middleware takes one argument
   //to determine the location of the static folder
