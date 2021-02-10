@@ -1,4 +1,4 @@
-// Load the 'User' Mongoose model
+// Load the 'Student' Mongoose model
 var Student = require("mongoose").model("Student");
 // Create a new render method to render index.ejs
 //
@@ -54,15 +54,12 @@ exports.students = async function (req, res) {
   let students = await Student.find({});
 
   res.json({ students });
-  //display signin.ejs
-  // res.render("students", {
-  //   title: "Students - Course Evaluation",
-  // });
 };
 
 //Mongoose stuff
 // Create a new 'create' controller method
 exports.create = function (req, res, next) {
+  req.session.email = req.body.email;
   // Create a new instance of the 'Student' Mongoose model
   var student = new Student(req.body); //get data from ejs page and attaches them to the model
 
@@ -78,15 +75,16 @@ exports.create = function (req, res, next) {
   });
 };
 
-// Create a new 'create' controller method
+// Create a new 'find' controller method
 exports.find = function (req, res, next) {
   // executes, passing results to callback
+  req.session.email = req.body.email;
   Student.find(
     { email: req.body.email, password: req.body.password },
-    function (err, docs) {
+    function (err, student) {
       if (err) {
         res.json({ Error: err });
-      } else if (!docs.length) {
+      } else if (!student.length) {
         res.json({
           Error:
             "Email or password maybe wrong or you do not have an account with us.",

@@ -10,6 +10,7 @@ var comment = require("../controllers/comment.server.controller");
 module.exports = function (app) {
   //handle a get request made to root path
   app.get("/comments", comment.comments); //go to http://localhost:3000/comments
+  app.post("/comments", comment.create);
   app.get("/thankyou", comment.thankYou); //go to http://localhost:3000/thankyou
   app.get("/submit_comments", comment.submitComments); //go to http://localhost:3000/submit_comments
 };
