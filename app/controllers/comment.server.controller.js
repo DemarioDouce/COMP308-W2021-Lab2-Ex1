@@ -22,17 +22,28 @@ exports.comments = function (req, res) {
 
 exports.thankYou = function (req, res) {
   //display comments.ejs
-  res.render("thankyou", {
-    title: "Thank You - Course Evaluation",
-    email: "wqdqw",
-    comment: "dqwdq",
+  Student.findOne({ email: req.session.email }, function (err, student) {
+    if (err) {
+      res.json({ Error: err });
+    } else {
+      res.render("thankyou", {
+        title: "Thank You - Course Evaluation",
+        email: student.email,
+        comment: "dqwdq",
+      });
+    }
   });
 };
 
-exports.submitComments = function (req, res) {
+exports.submitComments = async function (req, res) {
   //display comments.ejs
+  // find all documents
+  let students = await Student.find({});
+  let comments = await Comment.find({});
+
   res.render("submit_comments", {
     title: "Submit Comments - Course Evaluation",
+    data: comments,
   });
 };
 

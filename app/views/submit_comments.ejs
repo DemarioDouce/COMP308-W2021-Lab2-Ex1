@@ -14,7 +14,7 @@
     />
 
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="/css/general.css" />
+    <link rel="stylesheet" href="/css/general2.css" />
 
     <title><%= title %></title>
   </head>
@@ -30,24 +30,28 @@
             <tr>
               <th scope="col">Course code</th>
               <th scope="col">Course Name</th>
+              <th scope="col">Program</th>
+              <th scope="col">Semester</th>
               <th scope="col">Comment</th>
+              <th scope="col">Date</th>
             </tr>
           </thead>
           <tbody>
+            <% for(var i=0; i < data.length; i++) { %>
             <tr>
-              <td>Mark</td>
-              <td>Otto</td>
-              <td>@mdo</td>
+              <td><%= data[i].courseCode%></td>
+              <td><%= data[i].courseName %></td>
+              <td><%= data[i].program %></td>
+              <td><%= data[i].semester %></td>
+              <td><%= data[i].comment %></td>
+              <td><%= data[i].date.toDateString() %></td>
             </tr>
-            <tr>
-              <td>Jacob</td>
-              <td>Thornton</td>
-              <td>@fat</td>
-            </tr>
+            <% } %>
           </tbody>
         </table>
       </div>
     </div>
+
     <!-- Copyright -->
     <footer class="bg-dark text-center text-lg-start" style="margin-top: 20%">
       <div class="text-center p-3" style="color: white">

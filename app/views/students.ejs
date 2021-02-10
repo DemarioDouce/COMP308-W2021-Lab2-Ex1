@@ -34,16 +34,13 @@
             </tr>
           </thead>
           <tbody>
+            <% for(var i=0; i < data.length; i++) { %>
             <tr>
-              <td>Mark</td>
-              <td>Otto</td>
-              <td>@mdo</td>
+              <td><%= data[i].firstName%></td>
+              <td><%= data[i].lastName %></td>
+              <td><%= data[i].email %></td>
             </tr>
-            <tr>
-              <td>Jacob</td>
-              <td>Thornton</td>
-              <td>@fat</td>
-            </tr>
+            <% } %>
           </tbody>
         </table>
       </div>

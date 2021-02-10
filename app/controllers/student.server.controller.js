@@ -50,10 +50,12 @@ exports.signIn = function (req, res) {
 };
 
 exports.students = async function (req, res) {
-  // find all documents
   let students = await Student.find({});
 
-  res.json({ students });
+  res.render("students", {
+    title: "Students - Course Evaluation",
+    data: students,
+  });
 };
 
 //Mongoose stuff
