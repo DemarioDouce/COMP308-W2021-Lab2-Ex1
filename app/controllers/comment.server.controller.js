@@ -6,6 +6,7 @@ var Comment = require("mongoose").model("Comment");
 //You'll need to use Express routing functionality to utilize the controller
 
 exports.comments = function (req, res) {
+  req.session.comment = req.body.comment;
   //display comments.ejs
   Student.findOne({ email: req.session.email }, function (err, student) {
     if (err) {
@@ -13,32 +14,28 @@ exports.comments = function (req, res) {
     } else {
       res.render("comments", {
         title: "Comments - Course Evaluation",
-        fname: student.firstName.toUpperCase(),
-        lname: student.lastName.toUpperCase(),
+        fname: student.firstName,
+        lname: student.lastName,
+        email: student.email,
       });
     }
   });
 };
 
-exports.thankYou = function (req, res) {
+exports.thankYou = async function (req, res) {
   //display comments.ejs
-  Student.findOne({ email: req.session.email }, function (err, student) {
-    if (err) {
-      res.json({ Error: err });
-    } else {
-      res.render("thankyou", {
-        title: "Thank You - Course Evaluation",
-        email: student.email,
-        comment: "dqwdq",
-      });
-    }
+  let students = await Student.findOne({ email: req.session.email });
+
+  res.render("thankyou", {
+    title: "Thank You - Course Evaluation",
+    email: students.email,
+    comment: req.session.comment,
   });
 };
 
 exports.submitComments = async function (req, res) {
   //display comments.ejs
   // find all documents
-  let students = await Student.find({});
   let comments = await Comment.find({});
 
   res.render("submit_comments", {
@@ -50,6 +47,7 @@ exports.submitComments = async function (req, res) {
 //Mongoose stuff
 // Create a new 'create' controller method
 exports.create = function (req, res, next) {
+  req.session.comment = req.body.comment;
   // Create a new instance of the 'Student' Mongoose model
   var comment = new Comment(req.body); //get data from ejs page and attaches them to the model
 

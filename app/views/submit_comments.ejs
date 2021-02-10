@@ -27,7 +27,9 @@
         <h1>ALL STUDENTS COMMENTS</h1>
         <table class="table">
           <thead>
-            <tr>
+            <th scope="col">First Name</th>
+            <th scope="col">Last Name</th>
+            <th scope="col">Email</th>
               <th scope="col">Course code</th>
               <th scope="col">Course Name</th>
               <th scope="col">Program</th>
@@ -39,6 +41,9 @@
           <tbody>
             <% for(var i=0; i < data.length; i++) { %>
             <tr>
+              <td><%= data[i].firstName%></td>
+              <td><%= data[i].lastName%></td>
+              <td><%= data[i].email%></td>
               <td><%= data[i].courseCode%></td>
               <td><%= data[i].courseName %></td>
               <td><%= data[i].program %></td>

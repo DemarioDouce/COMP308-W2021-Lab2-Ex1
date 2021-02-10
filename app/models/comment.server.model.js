@@ -6,6 +6,9 @@ const Schema = mongoose.Schema;
 //define a new CommentSchema
 const CommentSchema = new Schema({
   //
+  firstName: String,
+  lastName: String,
+  email: String,
   courseCode: String,
   courseName: String,
   program: String,
@@ -14,10 +17,6 @@ const CommentSchema = new Schema({
   date: {
     type: Date,
     default: Date.now,
-  },
-  student: {
-    type: Schema.Types.ObjectId,
-    ref: "Student",
   },
 });
 //

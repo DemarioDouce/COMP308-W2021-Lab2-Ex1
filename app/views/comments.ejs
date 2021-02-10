@@ -24,11 +24,29 @@
     </header>
     <div class="container">
       <div class="text-center">
-        <h1>HELLO <%= fname %> <%= lname %></h1>
+        <h1>HELLO <%= fname.toUpperCase() %> <%= lname.toUpperCase() %></h1>
         <h5>SUBMIT A COMMENT</h5>
       </div>
 
       <form method="post">
+        <input
+          type="hidden"
+          class="form-control"
+          value="<%= fname %>"
+          name="firstName"
+        />
+        <input
+          type="hidden"
+          class="form-control"
+          value="<%= lname %>"
+          name="lastName"
+        />
+        <input
+          type="hidden"
+          class="form-control"
+          value="<%= email %>"
+          name="email"
+        />
         <input
           type="text"
           class="form-control"
